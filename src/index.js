@@ -1,15 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import client from 'react-dom/client';
+import { IntlProvider } from 'react-intl'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+import messages from './lang.json'
+
+const Root = client.createRoot(document.getElementById('root'));
+Root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    <IntlProvider locale='en' messages={messages}>
+      <App />
+    </IntlProvider>
+  </React.StrictMode>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
